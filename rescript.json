@@ -1,0 +1,28 @@
+{
+    "name": "my-pkm-rescript-app",
+    "sources": [
+      {
+        "dir": "src",
+        "subdirs": true
+      }
+    ],
+    "package-specs": [
+      {
+        "module": "esmodule",
+        "in-source": true
+      }
+    ],
+    "suffix": ".re.js",
+    "bs-dependencies": [
+      "@rescript/core",
+      "@rescript/react",
+      "@glennsl/rescript-fetch",
+      "rescript-debounce"
+    ],
+    "bsc-flags": [
+      "-open RescriptCore"
+    ],
+    "jsx": {
+      "version": 4
+    }
+  }
