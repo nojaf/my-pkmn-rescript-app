@@ -17,10 +17,12 @@
       "@rescript/core",
       "@rescript/react",
       "@glennsl/rescript-fetch",
-      "rescript-debounce"
+      "rescript-debounce",
+      "rescript-schema"
     ],
     "bsc-flags": [
-      "-open RescriptCore"
+      "-open RescriptCore",
+      "-open RescriptSchema"
     ],
     "jsx": {
       "version": 4

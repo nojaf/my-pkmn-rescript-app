@@ -19,22 +19,22 @@ let getId = state => {
   }
 }
 
+type pkmn = {
+  name: string,
+  image: string,
+}
+
+let pkmnSchema = S.object(s => {
+  {
+    name: s.field("name", S.string),
+    image: s.nestedField("sprites", "front_default", S.string),
+  }
+})
+
 let decodeJson = (json: Js.Json.t) => {
-  switch json {
-  | Js.Json.Object(root) =>
-    switch Js.Dict.get(root, "name") {
-    | Some(Js.Json.String(name)) =>
-      switch Js.Dict.get(root, "sprites") {
-      | Some(Js.Json.Object(sprites)) =>
-        switch Js.Dict.get(sprites, "front_default") {
-        | Some(Js.Json.String(image)) => Ok(name, image)
-        | _ => Error("Has no front_default")
-        }
-      | _ => Error("Has no sprite node")
-      }
-    | _ => Error("Has no name property")
-    }
-  | _ => Error("Unexpected JSON")
+  switch S.parseWith(json, pkmnSchema) {
+  | Ok(pkmn) => Ok(pkmn)
+  | Error(e) => Error(e->S.Error.message)
   }
 }
 
@@ -47,8 +47,8 @@ let make = () => {
   let load = ((v: string) => setState(_ => Loading(v)))->Debounce.make(~wait=500)
 
   React.useEffect1(() => {
-    Belt.Int.fromString(getId(state))->Option.forEach(id => {
-      let idAsString = Belt.Int.toString(id)
+    Int.fromString(getId(state))->Option.forEach(id => {
+      let idAsString = Int.toString(id)
       Fetch.fetch(`https://pokeapi.co/api/v2/pokemon/${idAsString}`, {})
       ->Promise.then(
         response => {
@@ -72,7 +72,7 @@ let make = () => {
       ->Promise.thenResolve(
         result => {
           switch result {
-          | Ok(name, image) =>
+          | Ok({name, image}) =>
             setState(
               _ => Data({
                 id: idAsString,
