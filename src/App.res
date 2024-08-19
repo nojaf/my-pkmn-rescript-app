@@ -1,5 +1,4 @@
 %%raw("import './App.css'")
-
 // See https://forum.rescript-lang.org/t/how-to-get-input-value-in-rescript/1037/5?u=nojaf
 let getEventValue = e => {
   let target = e->JsxEvent.Form.target
@@ -39,6 +38,7 @@ let decodeJson = (json: Js.Json.t) => {
 }
 
 let unknownErrorMessage = "Unexpected error during API request"
+
 
 @react.component
 let make = () => {
