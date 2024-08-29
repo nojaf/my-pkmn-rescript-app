@@ -97,7 +97,7 @@ let make = () => {
   }, [getId(state)])
 
   let (msg, className, img) = switch state {
-  | Loading(id) => (`Loading ${id}...`, "", React.null)
+  | Loading(id) => (`Loading ${id}...`, "loading", React.null)
   | Data({name, image}) => (name, "", <img src=image />)
   | Failed({reason}) => (reason, "error", React.null)
   }
@@ -111,6 +111,7 @@ let make = () => {
     <h1> {React.string("Hello ReScript")} </h1>
     <div className="card">
       <input
+        type_="number"
         placeholder="Enter the number of a Pokemon"
         defaultValue={getId(state)}
         onChange={ev => ev->getEventValue->load}
