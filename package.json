@@ -6,26 +6,24 @@
   "scripts": {
     "dev": "bunx --bun vite",
     "build": "bunx --bun vite build",
-    "lint": "bunx --bun rescript format -all && bunx --bun prettier src --write",
+    "format": "bunx --bun rescript format -all && bunx --bun prettier src --write",
     "preview": "vite preview"
   },
   "dependencies": {
     "@glennsl/rescript-fetch": "^0.2.2",
-    "@rescript/core": "^1.5.2",
+    "@rescript/core": "^1.6.0",
     "@rescript/react": "^0.13.0",
-    "firebase": "^10.13.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "rescript": "^11.1.3",
+    "rescript": "^11.1.4",
     "rescript-debounce": "^2.0.0",
-    "rescript-schema": "^8.0.3"
+    "rescript-schema": "^8.2.0"
   },
   "devDependencies": {
-    "@jihchi/vite-plugin-rescript": "^6.0.0",
     "@vitejs/plugin-react": "^4.3.1",
     "prettier": "^3.3.3",
-    "uglify-js": "^3.19.2",
-    "vite": "^5.4.1"
+    "vite": "^5.4.8",
+    "@nojaf/vite-plugin-rescript": "git+https://github.com/nojaf/vite-plugin-rescript.git#908b38afa72379288cbc76b69b411150fdb7d8df"
   },
   "trustedDependencies": [
     "rescript"

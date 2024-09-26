@@ -39,7 +39,6 @@ let decodeJson = (json: Js.Json.t) => {
 
 let unknownErrorMessage = "Unexpected error during API request"
 
-
 @react.component
 let make = () => {
   let (state, setState) = React.useState(() => Loading("25"))
