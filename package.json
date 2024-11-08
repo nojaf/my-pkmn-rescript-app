@@ -10,20 +10,20 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@glennsl/rescript-fetch": "^0.2.2",
-    "@rescript/core": "^1.6.0",
     "@rescript/react": "^0.13.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "rescript": "^11.1.4",
+    "rescript": "12.0.0-alpha.4",
     "rescript-debounce": "^2.0.0",
-    "rescript-schema": "^8.2.0"
+    "rescript-schema": "^8.2.0",
+    "usehooks-ts": "^3.1.0"
   },
   "devDependencies": {
+    "@nojaf/vite-plugin-rescript": "git+https://github.com/nojaf/vite-plugin-rescript.git#908b38afa72379288cbc76b69b411150fdb7d8df",
     "@vitejs/plugin-react": "^4.3.1",
     "prettier": "^3.3.3",
-    "vite": "^5.4.8",
-    "@nojaf/vite-plugin-rescript": "git+https://github.com/nojaf/vite-plugin-rescript.git#908b38afa72379288cbc76b69b411150fdb7d8df"
+    "@rescript/webapi": "link:experimental-rescript-webapi",
+    "vite": "^5.4.8"
   },
   "trustedDependencies": [
     "rescript"

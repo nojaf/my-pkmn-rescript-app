@@ -14,14 +14,11 @@
     ],
     "suffix": ".re.js",
     "bs-dependencies": [
-      "@rescript/core",
+      "@rescript/webapi",
       "@rescript/react",
-      "@glennsl/rescript-fetch",
-      "rescript-debounce",
       "rescript-schema"
     ],
     "bsc-flags": [
-      "-open RescriptCore",
       "-open RescriptSchema"
     ],
     "jsx": {
