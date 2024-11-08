@@ -10,7 +10,7 @@ let getEventValue = e => {
 }
 
 @module("usehooks-ts")
-external useDebounceCallback: ('v => unit, int) => ('v => unit) = "useDebounceCallback"
+external useDebounceCallback: ('v => unit, int) => 'v => unit = "useDebounceCallback"
 
 type state =
   | Loading(string)
@@ -46,6 +46,7 @@ let decodeJson = (json: Js.Json.t) => {
 
 let unknownErrorMessage = "Unexpected error during API request"
 
+// This should be part of @rescript/webapi at some point.
 external window: DOMAPI.window = "window"
 
 @react.component
@@ -64,7 +65,6 @@ let make = () => {
           let code = response.status
           if code == 200 {
             response->Response.json->Promise.thenResolve(decodeJson)
-            // Fetch.Response.json(response)->Promise.thenResolve(decodeJson)
           } else {
             Promise.resolve(Error(`The API could not return a pokemon for "${idAsString}"`))
           }
