@@ -46,9 +46,6 @@ let decodeJson = (json: Js.Json.t) => {
 
 let unknownErrorMessage = "Unexpected error during API request"
 
-// This should be part of @rescript/webapi at some point.
-external window: DOMAPI.window = "window"
-
 @react.component
 let make = () => {
   let (state, setState) = React.useState(() => Loading("25"))
@@ -58,8 +55,7 @@ let make = () => {
   React.useEffect1(() => {
     Int.fromString(getId(state))->Option.forEach(id => {
       let idAsString = Int.toString(id)
-      window
-      ->Window.fetch2(~input=`https://pokeapi.co/api/v2/pokemon/${idAsString}`)
+      fetch2(~input=`https://pokeapi.co/api/v2/pokemon/${idAsString}`)
       ->Promise.then(
         response => {
           let code = response.status

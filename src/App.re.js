@@ -58,7 +58,7 @@ function App(props) {
   React.useEffect(() => {
     Option.forEach(Int.fromString(getId(state), undefined), id => {
       let idAsString = id.toString();
-      $$Promise.$$catch(window.fetch("https://pokeapi.co/api/v2/pokemon/" + idAsString).then(response => {
+      $$Promise.$$catch(fetch("https://pokeapi.co/api/v2/pokemon/" + idAsString).then(response => {
         let code = response.status;
         if (code === 200) {
           return response.json().then(decodeJson);

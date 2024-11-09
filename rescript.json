@@ -19,7 +19,8 @@
       "rescript-schema"
     ],
     "bsc-flags": [
-      "-open RescriptSchema"
+      "-open RescriptSchema",
+      "-open Global"
     ],
     "jsx": {
       "version": 4
