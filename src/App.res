@@ -1,11 +1,9 @@
 %%raw("import './App.css'")
 
-external asHMTLInputElement: 't => DOMAPI.htmlInputElement = "%identity"
-
 // See https://forum.rescript-lang.org/t/how-to-get-input-value-in-rescript/1037/5?u=nojaf
 let getEventValue = e => {
   let target = e->JsxEvent.Form.target
-  let input = asHMTLInputElement(target)
+  let input : DOMAPI.htmlInputElement =  Prelude.unsafeConversation(target)
   input.value
 }
 
