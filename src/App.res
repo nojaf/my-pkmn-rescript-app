@@ -1,9 +1,14 @@
 %%raw("import './App.css'")
+
 // See https://forum.rescript-lang.org/t/how-to-get-input-value-in-rescript/1037/5?u=nojaf
 let getEventValue = e => {
   let target = e->JsxEvent.Form.target
-  (target["value"]: string)
+  let input : DOMAPI.htmlInputElement =  Prelude.unsafeConversation(target)
+  input.value
 }
+
+@module("usehooks-ts")
+external useDebounceCallback: ('v => unit, int) => 'v => unit = "useDebounceCallback"
 
 type state =
   | Loading(string)
@@ -43,17 +48,17 @@ let unknownErrorMessage = "Unexpected error during API request"
 let make = () => {
   let (state, setState) = React.useState(() => Loading("25"))
   // Add some debouncing to typed input
-  let load = ((v: string) => setState(_ => Loading(v)))->Debounce.make(~wait=500)
+  let load = useDebounceCallback(text => setState(_ => Loading(text)), 500)
 
   React.useEffect1(() => {
     Int.fromString(getId(state))->Option.forEach(id => {
       let idAsString = Int.toString(id)
-      Fetch.fetch(`https://pokeapi.co/api/v2/pokemon/${idAsString}`, {})
+      fetch2(~input=`https://pokeapi.co/api/v2/pokemon/${idAsString}`)
       ->Promise.then(
         response => {
-          let code = Fetch.Response.status(response)
+          let code = response.status
           if code == 200 {
-            Fetch.Response.json(response)->Promise.thenResolve(decodeJson)
+            response->Response.json->Promise.thenResolve(decodeJson)
           } else {
             Promise.resolve(Error(`The API could not return a pokemon for "${idAsString}"`))
           }
