@@ -1,4 +1,5 @@
 %%raw("import './App.css'")
+open WebAPI
 
 // See https://forum.rescript-lang.org/t/how-to-get-input-value-in-rescript/1037/5?u=nojaf
 let getEventValue = e => {
