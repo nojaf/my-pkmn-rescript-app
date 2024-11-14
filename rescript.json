@@ -20,7 +20,7 @@
     ],
     "bsc-flags": [
       "-open RescriptSchema",
-      "-open Global"
+      "-open WebAPI.Global"
     ],
     "jsx": {
       "version": 4
