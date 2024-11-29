@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@rescript/react": "^0.13.0",
+    "@rescript/webapi": "0.1.0-experimental-20e9e63",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "rescript": "12.0.0-alpha.4",
@@ -21,7 +22,6 @@
     "@nojaf/vite-plugin-rescript": "git+https://github.com/nojaf/vite-plugin-rescript.git#908b38afa72379288cbc76b69b411150fdb7d8df",
     "@vitejs/plugin-react": "^4.3.1",
     "prettier": "^3.3.3",
-    "@rescript/webapi": "^0.1.0-experimental-29b94b3",
     "vite": "^5.4.8"
   },
   "trustedDependencies": [

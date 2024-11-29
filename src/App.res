@@ -1,9 +1,10 @@
 %%raw("import './App.css'")
+open WebAPI
 
 // See https://forum.rescript-lang.org/t/how-to-get-input-value-in-rescript/1037/5?u=nojaf
 let getEventValue = e => {
   let target = e->JsxEvent.Form.target
-  let input : DOMAPI.htmlInputElement =  Prelude.unsafeConversation(target)
+  let input: DOMAPI.htmlInputElement = Prelude.unsafeConversation(target)
   input.value
 }
 
@@ -53,7 +54,7 @@ let make = () => {
   React.useEffect1(() => {
     Int.fromString(getId(state))->Option.forEach(id => {
       let idAsString = Int.toString(id)
-      fetch2(~input=`https://pokeapi.co/api/v2/pokemon/${idAsString}`)
+      fetch(`https://pokeapi.co/api/v2/pokemon/${idAsString}`)
       ->Promise.then(
         response => {
           let code = response.status
